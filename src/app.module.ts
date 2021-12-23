@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { LavajatosModule } from './lavajatos/lavajatos.module';
 import { boolean } from 'boolean';
+import { AgendasModule } from './agendas/agendas.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),
@@ -23,6 +24,7 @@ import { boolean } from 'boolean';
   UsersModule,
   AuthModule,
   LavajatosModule,
+  AgendasModule,
   ],
 })
 export class AppModule {}

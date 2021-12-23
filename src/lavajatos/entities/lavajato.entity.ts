@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Agenda } from "src/agendas/entities/agenda.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class Lavajato {
@@ -19,4 +20,7 @@ export class Lavajato {
 
     @Column ('text')
     agendadeatendimento: string;
+
+    @OneToMany(() => Agenda, agenda => agenda.lavajato)
+    agendas: Agenda[];
 }

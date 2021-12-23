@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Agenda } from "src/agendas/entities/agenda.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class User {
@@ -19,4 +20,7 @@ export class User {
 
     @Column ('text')
     password: string;
+
+    @OneToMany(() => Agenda, agenda => agenda.user)
+    agendas: Agenda[];
 }
