@@ -5,6 +5,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     readonly nome: string;
     readonly endereco: string;
     readonly telefone: string;
+    readonly insta: string;
     readonly email: string;
     readonly password: string;
    

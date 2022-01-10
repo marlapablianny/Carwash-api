@@ -9,4 +9,10 @@ export class CreateAgendaDto {
 
     @IsNotEmpty()
     readonly user: User;
+
+    @IsNotEmpty()
+    readonly data: string;
+
+    @IsNotEmpty()
+    readonly hora: string;
 }

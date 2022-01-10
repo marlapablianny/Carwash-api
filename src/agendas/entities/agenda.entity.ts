@@ -12,9 +12,13 @@ export class Agenda {
     lavajato: Lavajato;
 
     @ManyToOne(() => User, user => user.agendas)
+    @JoinColumn()
     user: User;
 
-    @CreateDateColumn()
-    data: Date
+    @Column()
+    data: string;
+    
+    @Column()
+    hora: string;
 
 }

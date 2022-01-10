@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnsupportedMediaTypeException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateAgendaDto } from './dto/create-agenda.dto';
@@ -23,6 +23,10 @@ export class AgendasService {
 
   findOne(id: number): Promise<Agenda> {
     return  this.agendasRepository.findOne(id);
+  }
+
+  findByAgenda(userId: number): Promise<Agenda[]>{
+    return this.agendasRepository.find({ where: {userId} });
   }
 
   async update(id: number, updateAgendaDto: UpdateAgendaDto) {

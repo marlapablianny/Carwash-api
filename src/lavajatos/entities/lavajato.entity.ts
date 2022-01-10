@@ -1,5 +1,6 @@
 import { Agenda } from "src/agendas/entities/agenda.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { User } from "src/users/entities/user.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from "typeorm";
 
 @Entity()
 export class Lavajato {
@@ -13,13 +14,23 @@ export class Lavajato {
     endereco: string;
 
     @Column ('text')
+    cidade: string;
+
+    @Column ('text')
     telefone: string;
 
     @Column ('text')
-    horario: string;
+    segundaasexta: string;
+
+    @Column ('text')
+    sabado: string;
 
     @Column ('text')
     agendadeatendimento: string;
+
+    @OneToOne(() => User, user =>  user.lavajato)
+    @JoinColumn()
+    user: User;
 
     @OneToMany(() => Agenda, agenda => agenda.lavajato)
     agendas: Agenda[];

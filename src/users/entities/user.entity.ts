@@ -1,5 +1,6 @@
 import { Agenda } from "src/agendas/entities/agenda.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Lavajato } from "src/lavajatos/entities/lavajato.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne } from "typeorm";
 
 @Entity()
 export class User {
@@ -14,6 +15,9 @@ export class User {
 
     @Column ('text')
     endereco: string;
+
+    @Column ('text')
+    insta: string;
     
     @Column ({unique: true})
     email: string;
@@ -21,6 +25,11 @@ export class User {
     @Column ('text')
     password: string;
 
+    @OneToOne(() => Lavajato, lavajato =>  lavajato.user, {
+        eager: true
+    })
+    lavajato : Lavajato;
+
     @OneToMany(() => Agenda, agenda => agenda.user)
-    agendas: Agenda[];
+    agendas: Promise<Agenda[]>;
 }

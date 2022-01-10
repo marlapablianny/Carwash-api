@@ -17,7 +17,7 @@ export class AgendasController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() {idLavajato}: any,  @Request() request: any) {
+  async create(@Body() {idLavajato, data, hora}: any,  @Request() request: any) {
     const idUser =  request.user.id
     const user = await this.usersService.findOne(idUser);
     const lavajato = await this.lavajatosService.findOne(idLavajato);
@@ -26,7 +26,7 @@ export class AgendasController {
       throw new NotFoundException('Lava jato não encontrado')
     }
 
-    await this.agendasService.create({user, lavajato});
+    await this.agendasService.create({user, lavajato, data, hora});
   
   }
 
@@ -36,6 +36,15 @@ export class AgendasController {
   findAll() {
     return this.agendasService.findAll();
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('busca')
+  async findByAgenda(@Request() request) {
+    const userId = request.user.id
+    const user = await this.usersService.findOne(userId);
+    return await user.agendas
+  }
+
 
   @UseGuards(JwtAuthGuard)
   @Get(':id')

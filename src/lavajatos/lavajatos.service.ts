@@ -26,6 +26,10 @@ export class LavajatosService {
     return  this.lavajatosRepository.findOne(id);
   }
 
+  findByCidade(nomeDaCidade: string): Promise<Lavajato[]>{
+    return this.lavajatosRepository.find({ cidade: nomeDaCidade });
+  }
+
  async update(id: number, updateLavajatoDto: UpdateLavajatoDto) {
     await this.lavajatosRepository.update(id, updateLavajatoDto);
   }

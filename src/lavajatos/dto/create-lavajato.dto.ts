@@ -1,4 +1,6 @@
 import { IsNotEmpty } from "class-validator";
+import { Lavajato } from "../entities/lavajato.entity";
+import { User } from "src/users/entities/user.entity";
 
 export class CreateLavajatoDto {
 
@@ -9,12 +11,20 @@ export class CreateLavajatoDto {
     readonly endereco: string;
 
     @IsNotEmpty()
-    readonly telefone: string;
-  
+    readonly cidade: string;
+
     @IsNotEmpty()
-    readonly horarios: string;
+    readonly telefone: string;
+
+    @IsNotEmpty()
+    readonly segundaasexta: string;
+
+    @IsNotEmpty()
+    readonly sabado: string;
   
     @IsNotEmpty()
     readonly agendadeatendimento: string;
-
+    
+    @IsNotEmpty()
+    readonly user: User;
 }

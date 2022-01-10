@@ -4,8 +4,10 @@ import { CreateLavajatoDto } from './create-lavajato.dto';
 export class UpdateLavajatoDto extends PartialType(CreateLavajatoDto) {
     readonly nomedolavajato: string;
     readonly endereco: string;
+    readonly cidade: string;
     readonly telefone: string;
-    readonly horario: string;
+    readonly segundaasexta: string;
+    readonly sabado: string;
     readonly agendadeatendimento: string;
    
 }
